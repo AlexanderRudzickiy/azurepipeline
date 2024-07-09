@@ -2,11 +2,11 @@ trigger:
 - main
 
 variables:
-  ACR_NAME: privatecontainerregistry
-  IMAGE_NAME: flask-hello-world
-  RESOURCE_GROUP: AKS-LAB
-  AKS_NAME: private-aks-cluster
-  azureSubscriptionEndpoint: azure
+  ACR_NAME: <ACR name>
+  IMAGE_NAME: <image name>
+  RESOURCE_GROUP: <Azure RG name>
+  AKS_NAME: <AKS name>
+  azureSubscriptionEndpoint: <service connection name>
 
 stages:
 - stage: Build
