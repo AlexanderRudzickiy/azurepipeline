@@ -2,11 +2,11 @@ trigger:
 - main
 
 variables:
-  ACR_NAME: 'privatecontainerregistry'
-  IMAGE_NAME: 'flask-hello-world'
-  RESOURCE_GROUP: 'AKS-LAB'
-  AKS_NAME: 'private-aks-cluster'
-  azureSubscriptionEndpoint: 'azure'
+  ACR_NAME: privatecontainerregistry
+  IMAGE_NAME: flask-hello-world
+  RESOURCE_GROUP: AKS-LAB
+  AKS_NAME: private-aks-cluster
+  azureSubscriptionEndpoint: azure
 
 stages:
 - stage: Build
@@ -30,8 +30,7 @@ stages:
         repository: '$(IMAGE_NAME)'
         command: 'buildAndPush'
         Dockerfile: 'Dockerfile' # Adjust if necessary
-        tags: |
-          $(Build.BuildId)
+        tags: 'latest'
           
 - stage: Deploy
   dependsOn: Build
