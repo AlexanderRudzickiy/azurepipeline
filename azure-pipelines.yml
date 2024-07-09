@@ -6,13 +6,14 @@ variables:
   IMAGE_NAME: <image name>
   RESOURCE_GROUP: <Azure RG name>
   AKS_NAME: <AKS name>
-  azureSubscriptionEndpoint: <service connection name>
+  SERVICE_CONNECTION_NAME: <service connection name>
+  POOL_NAME: <agent pool name>
 
 stages:
 - stage: Build
   jobs:
   - job: Build
-    pool: test
+    pool: '$(POOL_NAME)'
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -29,14 +30,14 @@ stages:
         containerRegistry: '$(ACR_NAME)'
         repository: '$(IMAGE_NAME)'
         command: 'buildAndPush'
-        Dockerfile: 'Dockerfile' # Adjust if necessary
+        Dockerfile: 'Dockerfile'
         tags: 'latest'
           
 - stage: Deploy
   dependsOn: Build
   jobs:
   - deployment: Deploy
-    pool: test
+    pool: '$(POOL_NAME)'
     environment: 'aks-env'
     strategy:
       runOnce:
@@ -53,5 +54,5 @@ stages:
               configuration: 'manifests/deployment.yml'
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
-              azureSubscriptionEndpoint: '$(azureSubscriptionEndpoint)'
+              azureSubscriptionEndpoint: '$(SERVICE_CONNECTION_NAME)'
               azureContainerRegistry: '$(ACR_NAME)'
