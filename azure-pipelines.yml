@@ -10,8 +10,7 @@ stages:
 - stage: Build
   jobs:
   - job: Build
-    pool:
-      vmImage: 'windows-latest'
+    pool: test
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -36,8 +35,7 @@ stages:
   dependsOn: Build
   jobs:
   - deployment: Deploy
-    pool:
-      vmImage: 'ubuntu-latest'
+    pool: test
     environment: 'aks-env'
     strategy:
       runOnce:
