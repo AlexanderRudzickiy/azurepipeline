@@ -15,4 +15,5 @@ For future projects, it is recommended to use a pre-built image of Windows Serve
 5. Private Deployment: Facilitated the deployment of applications to a private AKS using images stored in a private ACR.
 
 Python code source: https://github.com/Azure-Samples/python-docs-hello-world
+
 Terraform: https://github.com/AlexanderRudzickiy/Private_AKS_with_ACR/tree/main
