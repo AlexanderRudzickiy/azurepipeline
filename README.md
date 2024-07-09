@@ -13,3 +13,5 @@ For future projects, it is recommended to use a pre-built image of Windows Serve
 3. Setting up VM as Azure DevOps Self-Hosted Agent: The VM is configured to run as a self-hosted agent in Azure DevOps and shown in the agent pool.
 4. Azure DevOps integration and service connection configuration: Ensured that our Azure DevOps pipelines utilize self-hosted agent to run CI/CD tasks and have permission to AKS/ACR.
 5. Private Deployment: Facilitated the deployment of applications to a private AKS using images stored in a private ACR.
+
+Python code source: https://github.com/Azure-Samples/python-docs-hello-world
