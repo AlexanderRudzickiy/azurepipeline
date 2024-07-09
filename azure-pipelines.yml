@@ -3,7 +3,7 @@ trigger:
 
 variables:
   # Container registry
-  ACR_NAME: myContainerRegistry.azurecr.io
+  ACR_NAME: privatecontainerregistry.azurecr.io
   IMAGE_NAME: flask-hello-world
 
 stages:
